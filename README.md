@@ -10,7 +10,7 @@ In this course you will learn to build a web application without frameworks or u
 
 ## Chosen user story
 
-As an art lover, I want to be able to search and view art from the Rijksmuseum at home, so that I can still enjoy art during a lockdown Rijksmuseum - RijksData API
+As an art lover, I want to be able to search and view art from the Rijksmuseum at home, so that I can still enjoy art during a lockdown [Rijksmuseum - RijksData API](https://data.rijksmuseum.nl/object-metadata/api/)
 
 
 ## Api investigation
