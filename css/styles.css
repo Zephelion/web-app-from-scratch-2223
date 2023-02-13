@@ -1,0 +1,28 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+li{
+    list-style: none;
+}
+
+main ul{
+    display:grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+main ul li{
+    background-color: black;
+    height: 200px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+main ul li:nth-of-type(even){
+    background-color: white;
+}
