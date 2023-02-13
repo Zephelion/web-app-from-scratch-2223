@@ -1,0 +1,91 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+@font-face {
+    font-family: "octarineBold";
+    src: url("../fonts/Octarine-Light.otf") format("truetype");
+}
+
+div#particles-js{
+    position: relative;
+    height: 100vh;
+}
+
+div#particles-js canvas{
+    position: absolute;
+    top: 0;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.card{
+    width: 390px;
+    height: 100vh;
+    background: linear-gradient(90deg,#000000, #000538);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.typing-container{
+    display: flex;
+}
+
+.input-cursor{
+    display: inline-block;
+    width: 2px;
+    height: 42px;
+    background-color: white;
+    margin-left: 8px;
+    animation: blink 1s infinite;
+}
+
+.codeblock{
+    font-size: 1.7em;
+    margin: 10px 20px 10px 20px;
+}
+
+/* .codeblock:not(::first-line){
+    
+} */
+
+/* .sentence::before{
+    color: #2596be;
+    content: "const";
+} */
+
+h1 span{
+    color: #2596be;
+}
+
+h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "octarineBold";
+    font-weight: 100;
+    color: white;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 1;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 0;
+    }
+}
