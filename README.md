@@ -18,6 +18,7 @@ As an art lover, I want to be able to search and view art from the Rijksmuseum a
 ### Rijksdata
  
 ![alt text](images/rijksdata.png "Rijks data")
+
 Rijksmuseum data services provide access to object metadata, bibliographic data, controlled vocabularies and user generated content. These pages comprise the technical documentation of RijksData, also available are a general introduction, as well as the open data policy of the museum.
 [Rijks data api](https://data.rijksmuseum.nl/)
 
