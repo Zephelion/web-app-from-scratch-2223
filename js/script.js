@@ -6,4 +6,4 @@ const fetchArt = async () => {
   console.log(data);
 }
 
-fetchArt();
+// fetchArt();
