@@ -35,4 +35,12 @@ const displayArt = (paintings) => {
     });
 }
 
+const searchArt = async (searchTerm) => {
+  console.log(searchTerm);
+  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&q=${searchTerm}&p=${page}&ps=10`);
+  const data = await response.json();
+
+  console.log(data);
+  
+}
 initialFetchArt();
