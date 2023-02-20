@@ -43,4 +43,10 @@ const searchArt = async (searchTerm) => {
   console.log(data);
   
 }
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  const searchTerm = searchInput.value;
+  searchArt(searchTerm);
+});
 initialFetchArt();
