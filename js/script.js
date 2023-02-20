@@ -47,9 +47,14 @@ const displayArt = (paintings) => {
     container.innerHTML = "";
 
     paintings.forEach(painting => {
-        var liHtml = `<li><img src="${painting.webImage.url}" alt="" srcset=""></li>`;
+        var liHtml = `<li class="loading"><img src="${painting.webImage.url}" alt="${painting.title}" srcset=""></li>`;
 
-        container.innerHTML += liHtml;
+        container.insertAdjacentHTML("beforeend", liHtml);
+        const lastLi = container.lastElementChild;
+
+        setTimeout(() => {
+          lastLi.classList.remove("loading");
+        }, 400);
     });
 }
 
