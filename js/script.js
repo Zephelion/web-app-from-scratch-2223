@@ -44,7 +44,6 @@ const loadMoreArt = async () => {
 }
 
 const displayArt = (paintings) => {
-    container.innerHTML = "";
 
     paintings.forEach(painting => {
         var liHtml = `<li class="loading"><img src="${painting.webImage.url}" alt="${painting.title}" srcset=""></li>`;
@@ -55,6 +54,7 @@ const displayArt = (paintings) => {
         setTimeout(() => {
           lastLi.classList.remove("loading");
         }, 400);
+
     });
 }
 
@@ -66,6 +66,8 @@ const searchArt = async (searchTerm) => {
   console.log(data);
   
 }
+
+
 window.addEventListener("scroll", () => {
   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
   
@@ -84,6 +86,7 @@ window.addEventListener("scroll", () => {
 
 
 });
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
