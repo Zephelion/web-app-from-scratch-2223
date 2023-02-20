@@ -1,8 +1,15 @@
 const apiKey = "9ht5U2BA";
 const container = document.querySelector("main ul");
+const searchInput = document.getElementById("search");
+const form = document.querySelector("form");
+var throttleTimer;
+const limit = 30;
+var page = 1;
 
-console.log(container);
+console.log(form);
 
+
+let fired = false;
 const throttle = (callback, time) => {
 
     if (throttleTimer) return;
