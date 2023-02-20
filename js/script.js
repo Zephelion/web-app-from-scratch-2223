@@ -14,6 +14,7 @@ const throttle = (callback, time) => {
       throttleTimer = false;
     }, time);
 }
+
 const initialFetchArt = async () => {
 
   const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
