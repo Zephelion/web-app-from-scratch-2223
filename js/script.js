@@ -90,4 +90,17 @@ form.addEventListener("submit", (e) => {
   const searchTerm = searchInput.value;
   searchArt(searchTerm);
 });
+
+// window.addEventListener("scroll", () => {
+//   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+
+//   throttle(() => {
+//     if(endOfPage) {
+//         console.log(endOfPage);
+//         console.log("end of page");
+//     }
+
+//   },1000)
+
+// });
 initialFetchArt();
