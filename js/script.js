@@ -25,6 +25,15 @@ const initialFetchArt = async () => {
   displayArt(paintings);
 }
 
+const loadMoreArt = async () => {
+  page++;
+  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
+  const data = await response.json();
+
+  const morePaintings = data.artObjects;
+
+  displayArt(morePaintings);
+}
 const displayArt = (paintings) => {
     container.innerHTML = "";
 
@@ -43,6 +52,24 @@ const searchArt = async (searchTerm) => {
   console.log(data);
   
 }
+window.addEventListener("scroll", () => {
+  const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+  
+  throttle(() => {
+
+    if(endOfPage && !fired) {
+      
+      loadMoreArt();
+      console.log("end of page");
+      fired = true;
+    }else if(!endOfPage){
+      fired = false;
+    }
+    
+  }, 1000);
+
+
+});
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
