@@ -13,6 +13,34 @@ li{
     list-style: none;
 }
 
+label{
+    display: none;
+}
+
+form{
+    position: fixed;
+    width: 90%;
+    left: 50%;
+    bottom: 32px;
+    transform: translateX(-50%);
+}
+
+form input{
+    width: 100%;
+    height: 32px;
+    border: none;
+    border-radius: 16px;
+    padding: 0 16px;
+    font-size: 12px;
+    outline: none;
+    background-color: #454545;
+    color: #d0d0d0;
+}
+
+input[type="search"]::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+}
+
 main ul{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -22,7 +50,12 @@ main ul{
 
 main ul li{
     background-color: black;
-    /* height: 185px; */
+    transform: scale(1);
+    transition: transform 2s ease-in;
+}
+
+.loading{
+    transform: scale(0);
 }
 
 main ul li:hover{
