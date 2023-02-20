@@ -42,6 +42,7 @@ const loadMoreArt = async () => {
 
   displayArt(morePaintings);
 }
+
 const displayArt = (paintings) => {
     container.innerHTML = "";
 
