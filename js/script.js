@@ -46,7 +46,12 @@ const loadMoreArt = async () => {
 const displayArt = (paintings) => {
 
     paintings.forEach(painting => {
-        var liHtml = `<li class="loading"><img src="${painting.webImage.url}" alt="${painting.title}" srcset=""></li>`;
+        var liHtml = `
+        <li class="loading">
+          <a href="#${painting.objectNumber}">
+            <img src="${painting.webImage.url}" alt="${painting.title}" srcset="">
+          </a>
+        </li>`;
 
         container.insertAdjacentHTML("beforeend", liHtml);
         const lastLi = container.lastElementChild;
