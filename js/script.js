@@ -31,7 +31,9 @@ const initialFetchArt = async () => {
   
   const paintings = data.artObjects;
   displayArt(paintings);
+  
 }
+
 
 const loadMoreArt = async () => {
   page++;
@@ -91,6 +93,7 @@ const appendMain = (artDetails) => {
 
   console.log(artDetails);
 }
+
 const getDetails = async (objectNumber) => {
   var objectNumber = objectNumber.replace("#", "");
   const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}?key=${apiKey}`);
@@ -100,6 +103,7 @@ const getDetails = async (objectNumber) => {
   const artDetails = data.artObject;
   appendMain(artDetails);
 }
+
 
 window.addEventListener("scroll", () => {
   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
