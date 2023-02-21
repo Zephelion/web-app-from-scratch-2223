@@ -106,9 +106,8 @@ const getDetails = async (objectNumber) => {
 
 
 window.addEventListener("scroll", () => {
-  const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-  
-  throttle(() => {
+  const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight - 500;
+  console.log(endOfPage);
 
     if(endOfPage && !fired) {
       
