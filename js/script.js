@@ -142,6 +142,7 @@ window.addEventListener("hashchange", onRouteChanged);
 
 
 initialFetchArt();
+
 // window.addEventListener("scroll", () => {
 //   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
 
