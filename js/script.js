@@ -67,6 +67,25 @@ const searchArt = async (searchTerm) => {
   
 }
 
+const appendMain = (artDetails) => {
+  const main = document.querySelector("main");
+  main.innerHTML = "";
+
+  var html = `
+    <figure>
+      <img src="${artDetails.webImage.url}" alt="">
+      <figcaption>${artDetails.title}</figcaption>
+    </figure>
+    <h3>${artDetails.principalMaker} - ${artDetails.id}</h3>
+    <section>
+      <h2>${artDetails.dating.presentingDate}</h2>
+      <p>${artDetails.description}</p>
+      <p>${artDetails.subTitle}</p>
+    </section>`;
+  main.insertAdjacentHTML("beforeend", html);
+
+  console.log(artDetails);
+}
 const getDetails = async (objectNumber) => {
   var objectNumber = objectNumber.replace("#", "");
   const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}?key=${apiKey}`);
