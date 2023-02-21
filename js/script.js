@@ -67,6 +67,15 @@ const searchArt = async (searchTerm) => {
   
 }
 
+const getDetails = async (objectNumber) => {
+  var objectNumber = objectNumber.replace("#", "");
+  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}?key=${apiKey}`);
+  const data = await response.json();
+
+
+  const artDetails = data.artObject;
+  appendMain(artDetails);
+}
 
 window.addEventListener("scroll", () => {
   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
