@@ -122,6 +122,17 @@ form.addEventListener("submit", (e) => {
   searchArt(searchTerm);
 });
 
+const onRouteChanged = () => {
+  const hash = window.location.hash;
+
+  console.log(hash)
+  getDetails(hash);
+};
+
+window.addEventListener("hashchange", onRouteChanged);
+
+
+initialFetchArt();
 // window.addEventListener("scroll", () => {
 //   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
 
