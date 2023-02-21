@@ -4,6 +4,11 @@
     box-sizing: border-box;
 }
 
+@font-face {
+    font-family: 'Octarine';
+    src: url(../assets/fonts/Octarine-Bold.otf);
+}
+
 body{
     font-family: 'Poppins', sans-serif;
     background-color:black;
@@ -46,12 +51,75 @@ main ul{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 96px;
     gap: 0.1em;
+    transition: 0.4s;
+}
+
+main figure{
+    height: 50vh;
+    position: relative;
+}
+
+main h3{
+    color: white;
+    padding: 10px;
+    font-family: fantasy;
+}
+
+main figure img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+main > section{
+    padding: 10px;
+    font-family: fantasy;
+}
+
+main > section p:nth-of-type(2){
+    font-size: 1.5em;
+    font-weight: 100;
+    color: white;
+}
+
+main > section h2{
+    color: white;
+    font-size: 1.5em;
+    font-weight: 100;
+}
+
+main > section p{
+    color:gray;
+}
+
+main figure figcaption{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50%;
+    background: linear-gradient(0deg, black, transparent);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 300;
+    transition: 0.4s;
+    font-family: 'Octarine';
+    padding: 10px;
+    font-family: fantasy;
 }
 
 main ul li{
     background-color: black;
     transform: scale(1);
     transition: transform 2s ease-in;
+}
+
+main ul li a{
+    display:flex;
+    height: 100%;
 }
 
 .loading{
@@ -61,6 +129,7 @@ main ul li{
 main ul li:hover{
     transform: scale(1.2);
     transition: 0.5s;
+    z-index: 1;
 }
 
 main ul li img{
@@ -100,9 +169,4 @@ main ul li:nth-of-type(21){
 
 main ul li:nth-of-type(22){
     grid-column: 3/5;
-}
-
-
-main ul li:nth-of-type(even){
-    background-color: rgb(35, 200, 255);
 }
