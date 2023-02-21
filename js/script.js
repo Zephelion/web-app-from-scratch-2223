@@ -10,17 +10,17 @@ console.log(form);
 
 
 let fired = false;
-const throttle = (callback, time) => {
+// const throttle = (callback, time) => {
 
-    if (throttleTimer) return;
+//     if (throttleTimer) return;
 
-    throttleTimer = true;
+//     throttleTimer = true;
 
-    setTimeout(() => {
-      callback();
-      throttleTimer = false;
-    }, time);
-}
+//     setTimeout(() => {
+//       callback();
+//       throttleTimer = false;
+//     }, time);
+// }
 
 const initialFetchArt = async () => {
 
