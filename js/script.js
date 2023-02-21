@@ -6,7 +6,6 @@ var throttleTimer;
 const limit = 30;
 var page = 1;
 
-console.log(form);
 
 
 let fired = false;
@@ -26,8 +25,6 @@ const initialFetchArt = async () => {
 
   const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
   const data = await response.json();
-
-  console.log(data);
   
   const paintings = data.artObjects;
   displayArt(paintings);
@@ -108,17 +105,15 @@ const getDetails = async (objectNumber) => {
 window.addEventListener("scroll", () => {
   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight - 500;
   console.log(endOfPage);
-
-    if(endOfPage && !fired) {
-      
-      loadMoreArt();
-      console.log("end of page");
-      fired = true;
-    }else if(!endOfPage){
-      fired = false;
-    }
+  
+  if(endOfPage && !fired) {
     
-  }, 1000);
+    loadMoreArt();
+    console.log("end of page");
+    fired = true;
+  }else if(!endOfPage){
+    fired = false;
+  }
 
 
 });
@@ -154,5 +149,3 @@ initialFetchArt();
 //   },1000)
 
 // });
-
-initialFetchArt();
