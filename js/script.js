@@ -91,7 +91,7 @@ const appendMain = (artDetails) => {
   console.log(artDetails);
 }
 
-const getDetails = async (objectNumber) => {
+const handleRouting = async (objectNumber) => {
   var objectNumber = objectNumber.replace("#", "");
   const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}?key=${apiKey}`);
   const data = await response.json();
@@ -129,13 +129,24 @@ const onRouteChanged = () => {
   const hash = window.location.hash;
 
   console.log(hash)
-  getDetails(hash);
+  if(hash == ""){
+    console.log("home");
+  }else{
+    handleRouting(hash);
+  }
 };
 
-window.addEventListener("hashchange", onRouteChanged);
 
+const checkHash = () => {
+  console.log(window.location.hash);
+  if(window.location.hash) { 
+    onRouteChanged();
+  }
+}
 
 initialFetchArt();
+window.addEventListener("load", checkHash);
+window.addEventListener("hashchange", onRouteChanged);
 
 // window.addEventListener("scroll", () => {
 //   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
