@@ -87,7 +87,6 @@ const appendMain = (artDetails) => {
       <p>${artDetails.subTitle}</p>
     </section>`;
   main.insertAdjacentHTML("beforeend", html);
-
   console.log(artDetails);
 }
 
