@@ -2,8 +2,8 @@ const apiKey = "9ht5U2BA";
 const container = document.querySelector("main ul");
 const searchInput = document.getElementById("search");
 const form = document.querySelector("form");
-var throttleTimer;
 const limit = 30;
+var throttleTimer;
 var page = 1;
 
 
