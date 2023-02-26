@@ -7,7 +7,6 @@ const limit = 30;
 var page = 1;
 
 
-
 let fired = false;
 // const throttle = (callback, time) => {
 
@@ -67,7 +66,38 @@ const searchArt = async (searchTerm) => {
   const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&q=${searchTerm}&p=${page}&ps=10`);
   const data = await response.json();
 
-  console.log(data);
+  const paintingsOfMaker = data.artObjects;
+
+  if(paintingsOfMaker.length == 0){
+    container.innerHTML = "";
+    const section = document.querySelector(".empty-container");
+    const main = document.querySelector("main");
+
+    main.classList.add("flex");
+
+    section.innerHTML = `
+        <h2>Can't find artist with name '${searchTerm}'</h2>
+        <p>Try searching for a different artist</p>
+      `;
+  }else{
+
+    container.innerHTML = "";
+    paintingsOfMaker.forEach(painting => {
+      var liHtml = `
+      <li class="loading">
+        <a href="#${painting.objectNumber}">
+          <img src="${painting.webImage.url}" alt="${painting.title}" srcset="">
+        </a>
+      </li>`;
+
+      container.insertAdjacentHTML("beforeend", liHtml);
+      const lastLi = container.lastElementChild;
+
+      setTimeout(() => {
+        lastLi.classList.remove("loading");
+      }, 400);
+    });
+  }
   
 }
 
@@ -130,6 +160,7 @@ const onRouteChanged = () => {
   console.log(hash)
   if(hash == ""){
     console.log("home");
+    window.location = "index.html";
   }else{
     handleRouting(hash);
   }
@@ -146,16 +177,3 @@ const checkHash = () => {
 initialFetchArt();
 window.addEventListener("load", checkHash);
 window.addEventListener("hashchange", onRouteChanged);
-
-// window.addEventListener("scroll", () => {
-//   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
-
-//   throttle(() => {
-//     if(endOfPage) {
-//         console.log(endOfPage);
-//         console.log("end of page");
-//     }
-
-//   },1000)
-
-// });

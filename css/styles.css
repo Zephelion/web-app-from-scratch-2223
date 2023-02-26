@@ -46,12 +46,39 @@ input[type="search"]::-webkit-search-cancel-button{
     -webkit-appearance: none;
 }
 
+main{
+    min-height: 100vh;
+}
+
+.flex{
+    display:flex;
+}
+
 main ul{
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-auto-rows: 96px;
     gap: 0.1em;
     transition: 0.4s;
+}
+
+main section.empty-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+main section.empty-container h2{
+    color: white;
+    font-weight: 100;
+    font-family: sans-serif;
+    text-align: center;
+}
+
+main section.empty-container p{
+    color: gray;
+    font-family: sans-serif;
 }
 
 main figure{
