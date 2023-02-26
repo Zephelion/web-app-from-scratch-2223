@@ -1,92 +1,15 @@
-const apiKey = "9ht5U2BA";
-const container = document.querySelector("main ul");
+import { initialFetchArt } from "./modules/data.js";
+import { loadMoreArt } from "./modules/data.js";
+import { searchArt } from "./modules/data.js";
+import apiKey from "./modules/apikey.js";
+
+
 const searchInput = document.getElementById("search");
 const form = document.querySelector("form");
-const limit = 30;
 var throttleTimer;
-var page = 1;
-
 
 let fired = false;
-// const throttle = (callback, time) => {
 
-//     if (throttleTimer) return;
-
-//     throttleTimer = true;
-
-//     setTimeout(() => {
-//       callback();
-//       throttleTimer = false;
-//     }, time);
-// }
-
-const initialFetchArt = async () => {
-
-  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
-  const data = await response.json();
-  
-  const paintings = data.artObjects;
-  displayArt(paintings);
-  
-}
-
-
-const loadMoreArt = async () => {
-  page++;
-  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
-  const data = await response.json();
-
-  const morePaintings = data.artObjects;
-
-  displayArt(morePaintings);
-}
-
-const displayArt = (paintings) => {
-
-    paintings.forEach(painting => {
-        var liHtml = `
-        <li class="loading">
-          <a href="#${painting.objectNumber}">
-            <img src="${painting.webImage.url}" alt="${painting.title}" srcset="">
-          </a>
-        </li>`;
-
-        container.insertAdjacentHTML("beforeend", liHtml);
-        const lastLi = container.lastElementChild;
-
-        setTimeout(() => {
-          lastLi.classList.remove("loading");
-        }, 400);
-
-    });
-}
-
-const searchArt = async (searchTerm) => {
-  console.log(searchTerm);
-  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&q=${searchTerm}&p=${page}&ps=10`);
-  const data = await response.json();
-
-  const paintingsOfMaker = data.artObjects;
-
-  if(paintingsOfMaker.length == 0){
-    container.innerHTML = "";
-    const section = document.querySelector(".empty-container");
-    const main = document.querySelector("main");
-
-    main.classList.add("flex");
-
-    section.innerHTML = `
-        <h2>Can't find artist with name '${searchTerm}'</h2>
-        <p>Try searching for a different artist</p>
-      `;
-  }else{
-
-    container.innerHTML = "";
-
-    displayArt(paintingsOfMaker);
-  }
-  
-}
 
 const appendMain = (artDetails) => {
   const main = document.querySelector("main");
