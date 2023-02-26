@@ -82,21 +82,8 @@ const searchArt = async (searchTerm) => {
   }else{
 
     container.innerHTML = "";
-    paintingsOfMaker.forEach(painting => {
-      var liHtml = `
-      <li class="loading">
-        <a href="#${painting.objectNumber}">
-          <img src="${painting.webImage.url}" alt="${painting.title}" srcset="">
-        </a>
-      </li>`;
 
-      container.insertAdjacentHTML("beforeend", liHtml);
-      const lastLi = container.lastElementChild;
-
-      setTimeout(() => {
-        lastLi.classList.remove("loading");
-      }, 400);
-    });
+    displayArt(paintingsOfMaker);
   }
   
 }
