@@ -3,6 +3,7 @@ import { appendSearch } from "./render.js";
 import { container } from "./render.js";
 import { main } from "./render.js";
 import apiKey from "./apikey.js";
+import section from "./render.js";
 
 // const apiKey = "9ht5U2BA";
 const limit = 30;
@@ -41,6 +42,7 @@ export const searchArt = async (searchTerm) => {
   }else{
 
     container.innerHTML = "";
+    section.innerHTML = "";
     main.classList.remove("flex");
     console.log(paintingsOfMaker);
     displayArt(paintingsOfMaker);
