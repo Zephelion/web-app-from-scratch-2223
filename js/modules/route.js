@@ -1,4 +1,5 @@
 import { appendMain } from "./render.js";
+import apiKey from "./apikey.js";
 
 
 const handleRouting = async (objectNumber) => {
