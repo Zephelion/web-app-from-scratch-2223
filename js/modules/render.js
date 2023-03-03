@@ -1,5 +1,6 @@
 export const container = document.querySelector("main ul");
 export const main = document.querySelector("main");
+const section = document.querySelector(".empty-container");
 
 export const displayArt = (paintings) => {
 
@@ -23,7 +24,6 @@ export const displayArt = (paintings) => {
 
 export const appendSearch = (searchTerm) => {
     container.innerHTML = "";
-    const section = document.querySelector(".empty-container");
   
     main.classList.add("flex");
   
@@ -32,3 +32,24 @@ export const appendSearch = (searchTerm) => {
         <p>Try searching for a different artist</p>
       `;
 }
+
+export const appendMain = (artDetails) => {
+  const main = document.querySelector("main");
+  main.innerHTML = "";
+
+  var html = `
+    <figure>
+      <img src="${artDetails.webImage.url}" alt="">
+      <figcaption>${artDetails.title}</figcaption>
+    </figure>
+    <h3>${artDetails.principalMaker} - ${artDetails.id}</h3>
+    <section>
+      <h2>${artDetails.dating.presentingDate}</h2>
+      <p>${artDetails.description}</p>
+      <p>${artDetails.subTitle}</p>
+    </section>`;
+  main.insertAdjacentHTML("beforeend", html);
+  console.log(artDetails);
+}
+
+export default section;
