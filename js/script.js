@@ -1,16 +1,13 @@
 import { initialFetchArt } from "./modules/data.js";
 import { loadMoreArt } from "./modules/data.js";
-import { searchArt } from "./modules/data.js";
 import {checkHash} from "./modules/route.js";
 import {onRouteChanged} from "./modules/route.js";
-
+import {searchArt} from "./modules/data.js";
 
 const searchInput = document.getElementById("search");
 const form = document.querySelector("form");
-var throttleTimer;
 
 let fired = false;
-
 
 
 
@@ -30,15 +27,13 @@ window.addEventListener("scroll", () => {
 
 });
 
+
+initialFetchArt();
+window.addEventListener("load", checkHash);
+window.addEventListener("hashchange", onRouteChanged);
 form.addEventListener("submit", (e) => {
   e.preventDefault();
 
   const searchTerm = searchInput.value;
   searchArt(searchTerm);
 });
-
-
-
-initialFetchArt();
-window.addEventListener("load", checkHash);
-window.addEventListener("hashchange", onRouteChanged);
