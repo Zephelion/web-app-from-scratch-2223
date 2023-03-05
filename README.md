@@ -66,7 +66,7 @@ const fetchArt = async () => {
   console.log(data);
 }
 ```
-Next I decided to append the data to the Html. I created a displayArt function to do that.
+Next I decided to append the data to the Html. I created a displayArt function to do that. I emptied the list container and used the forEach functionality to loop over each painting and insert them into the Html by using innerHTML. See code below.
 ```
 const displayArt = (paintings) => {
     container.innerHTML = "";
@@ -119,7 +119,10 @@ main ul li img{
 ```
 
 ### Wrap up week 1
-HIER KOMT NOG TEXT.
+How the application currently looks like.
+<p style="text-align:center;">
+<img src="images/week1progress.png" alt="progress 1" width="300">
+</p>
 
 
 ## Rubric
