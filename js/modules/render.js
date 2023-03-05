@@ -22,7 +22,7 @@ export const displayArt = (paintings) => {
     });
 }
 
-export const appendSearch = (searchTerm) => {
+export const appendEmpty = (searchTerm) => {
     container.innerHTML = "";
   
     main.classList.add("flex");

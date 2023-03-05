@@ -1,5 +1,5 @@
 import { displayArt } from "./render.js";
-import { appendSearch } from "./render.js";
+import { appendEmpty } from "./render.js";
 import { container } from "./render.js";
 import { main } from "./render.js";
 import apiKey from "./apikey.js";
@@ -37,7 +37,7 @@ export const searchArt = async (searchTerm) => {
   const paintingsOfMaker = data.artObjects;
 
   if(paintingsOfMaker.length == 0){
-    appendSearch(searchTerm)
+    appendEmpty(searchTerm)
 
   }else{
 
