@@ -124,6 +124,8 @@ How the application currently looks like.
 <img src="images/week1progress.png" alt="progress 1" width="300">
 </p>
 
+## Week 2
+Loadin....
 
 ## Rubric
 
