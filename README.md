@@ -125,7 +125,35 @@ How the application currently looks like.
 </p>
 
 ## Week 2
-Loadin....
+This week I tried to focus on making the application more use-able for this I made an infinite scrolling function and a search function
+
+### Infinite scrolling
+Infinite scrolling is a popular user interface technique used to dynamically load content as the user scrolls down a page. This technique is often used to improve the performance of web pages that contain large amounts of data, such as search results, social media feeds, and image galleries.
+
+The basic idea behind infinite scrolling is to continuously load new content as the user approaches the end of the current content. This is achieved by detecting when the user has scrolled to the bottom of the page, and then making an asynchronous request to the server to retrieve more data. The new data is then appended to the existing content, allowing the user to continue scrolling without interruption.
+
+Here's an example of how to implement infinite scrolling in JavaScript:
+
+```
+window.addEventListener("scroll", () => {
+  const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight;
+
+  throttle(() => {
+
+    if(endOfPage && !fired) {
+
+      loadMoreArt();
+      console.log("end of page");
+      fired = true;
+    }else if(!endOfPage){
+      fired = false;
+    }
+
+  }, 1000);
+
+
+});
+```
 
 ## Rubric
 
