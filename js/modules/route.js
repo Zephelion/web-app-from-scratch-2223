@@ -5,8 +5,8 @@ import apiKey from "./apikey.js";
 const handleRouting = async (objectNumber) => {
     var objectNumber = objectNumber.replace("#", "");
     const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}?key=${apiKey}`);
+
     const data = await response.json();
-  
   
     const artDetails = data.artObject;
     appendMain(artDetails);
@@ -27,7 +27,6 @@ export const onRouteChanged = () => {
   
   
  export const checkHash = () => {
-    console.log(window.location.hash);
     if(window.location.hash) { 
       onRouteChanged();
     }
