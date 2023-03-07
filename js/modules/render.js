@@ -1,14 +1,22 @@
+// import apiKey  from "./apikey.js";
+import { getSmallerImg } from "./data.js";
+
 export const container = document.querySelector("main ul");
 export const main = document.querySelector("main");
+
 const section = document.querySelector(".empty-container");
 
-export const displayArt = (paintings) => {
+export const displayArt = async (paintings) => {
 
-    paintings.forEach(painting => {
+    paintings.forEach(async painting => {
+      
+      const objectNumber = painting.objectNumber;
+      const smallImg = await getSmallerImg(objectNumber);
+      
         var liHtml = `
         <li class="loading">
           <a href="#${painting.objectNumber}">
-            <img src="${painting.webImage.url}" alt="${painting.title}" srcset="">
+            <img src="${smallImg}" alt="${painting.title}" srcset="">
           </a>
         </li>`;
   
