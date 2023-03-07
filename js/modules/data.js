@@ -3,6 +3,7 @@ import { appendEmpty } from "./render.js";
 import { container } from "./render.js";
 import { main } from "./render.js";
 import {displayLoading, hideLoading} from "./loading.js";
+import { item } from "./render.js";
 import apiKey from "./apikey.js";
 import section from "./render.js";
 
@@ -61,12 +62,19 @@ export const searchArt = async (searchTerm) => {
 }
 
 export const getSmallerImg = async (objectNumber) => {
-  const smallerImg = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}/tiles?key=${apiKey}`);
-  const data = await smallerImg.json();
+  try{
+    const smallerImg = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}/tiles?key=${apiKey}`);
+    const data = await smallerImg.json();
+  
+    const z4s = data.levels.filter(level => level.name == "z4");
+    const z4 = z4s[0].tiles[0].url;
+  
+    return z4;
 
-  const z4s = data.levels.filter(level => level.name == "z4");
-  const z4 = z4s[0].tiles[0].url;
+  }catch(err){
+    
+    return "https://rkd.nl/images/partners/rijksmuseum-logo.jpg";
 
-  return z4;
+  }
 }
 

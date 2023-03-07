@@ -4,6 +4,8 @@ import { getSmallerImg } from "./data.js";
 export const container = document.querySelector("main ul");
 export const main = document.querySelector("main");
 
+export const item = document.querySelector("main ul li a");
+
 const section = document.querySelector(".empty-container");
 
 export const displayArt = async (paintings) => {
