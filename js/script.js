@@ -13,12 +13,10 @@ let fired = false;
 
 window.addEventListener("scroll", () => {
   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight - 500;
-  console.log(endOfPage);
   
   if(endOfPage && !fired) {
     
     loadMoreArt();
-    console.log("end of page");
     fired = true;
   }else if(!endOfPage){
     fired = false;

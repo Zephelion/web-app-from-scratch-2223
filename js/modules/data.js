@@ -2,12 +2,15 @@ import { displayArt } from "./render.js";
 import { appendEmpty } from "./render.js";
 import { container } from "./render.js";
 import { main } from "./render.js";
+import {displayLoading, hideLoading} from "./loading.js";
 import apiKey from "./apikey.js";
 import section from "./render.js";
 
 // const apiKey = "9ht5U2BA";
 const limit = 30;
 var page = 1;
+let loading = false;
+
 
 export const initialFetchArt = async () => {
 
@@ -21,12 +24,19 @@ export const initialFetchArt = async () => {
 
 export const loadMoreArt = async () => {
   page++;
-  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
-  const data = await response.json();
+  loading = true;
 
-  const morePaintings = data.artObjects;
-
-  displayArt(morePaintings);
+  if(loading){
+    displayLoading();
+    const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
+    const data = await response.json();
+  
+    const morePaintings = data.artObjects;
+  
+    displayArt(morePaintings);
+    hideLoading();
+    loading = false;
+  }
 }
 
 export const searchArt = async (searchTerm) => {

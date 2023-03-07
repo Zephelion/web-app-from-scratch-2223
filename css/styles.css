@@ -62,6 +62,21 @@ main ul{
     transition: 0.4s;
 }
 
+main div#loading.show{
+    visibility: visible;
+}
+
+main div#loading{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+}
+
+main div#loading img{
+    width: 3em;
+}
+
 main section.empty-container{
     display: flex;
     justify-content: center;
