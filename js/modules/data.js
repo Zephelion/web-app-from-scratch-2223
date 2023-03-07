@@ -3,19 +3,19 @@ import { appendEmpty } from "./render.js";
 import { container } from "./render.js";
 import { main } from "./render.js";
 import {displayLoading, hideLoading} from "./loading.js";
-import { item } from "./render.js";
 import apiKey from "./apikey.js";
 import section from "./render.js";
+export const domain = "https://www.rijksmuseum.nl/api/nl/collection/";
 
-// const apiKey = "9ht5U2BA";
 const limit = 30;
 var page = 1;
 let loading = false;
 
 
+
 export const initialFetchArt = async () => {
 
-  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
+  const response = await fetch(`${domain}?key=${apiKey}&p=${page}&ps=${limit}`);
   const data = await response.json();
   
   const paintings = data.artObjects;
@@ -29,7 +29,7 @@ export const loadMoreArt = async () => {
 
   if(loading){
     displayLoading();
-    const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&p=${page}&ps=${limit}`);
+    const response = await fetch(`${domain}?key=${apiKey}&p=${page}&ps=${limit}`);
     const data = await response.json();
   
     const morePaintings = data.artObjects;
@@ -42,7 +42,7 @@ export const loadMoreArt = async () => {
 
 export const searchArt = async (searchTerm) => {
   console.log(searchTerm);
-  const response = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/?key=${apiKey}&q=${searchTerm}&p=${page}&ps=10`);
+  const response = await fetch(`${domain}?key=${apiKey}&q=${searchTerm}&p=${page}&ps=10`);
   const data = await response.json();
 
   const paintingsOfMaker = data.artObjects;
@@ -63,7 +63,7 @@ export const searchArt = async (searchTerm) => {
 
 export const getSmallerImg = async (objectNumber) => {
   try{
-    const smallerImg = await fetch(`https://www.rijksmuseum.nl/api/nl/collection/${objectNumber}/tiles?key=${apiKey}`);
+    const smallerImg = await fetch(`${domain}${objectNumber}/tiles?key=${apiKey}`);
     const data = await smallerImg.json();
   
     const z4s = data.levels.filter(level => level.name == "z4");

@@ -44,6 +44,7 @@ export const appendEmpty = (searchTerm) => {
 }
 
 export const appendMain = (artDetails) => {
+  
   const main = document.querySelector("main");
   main.innerHTML = "";
 
@@ -60,6 +61,16 @@ export const appendMain = (artDetails) => {
     </section>`;
   main.insertAdjacentHTML("beforeend", html);
   console.log(artDetails);
+}
+
+export const appendError = () => {
+  main.innerHTML = "";
+  
+  main.classList.add("flex");
+  
+  main.innerHTML = `
+      <h2>Something went wrong</h2>
+    `;
 }
 
 export default section;
