@@ -450,7 +450,8 @@ I ended up doing this with most of my code and I was left with this.
 <img src="images/map.png">
 
 
-## And this is where we are now I guess....
+## Activity diagram
+<img src="images/activitydiagram.jpg">
 
 
 
