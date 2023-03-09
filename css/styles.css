@@ -31,16 +31,24 @@ form{
 }
 
 form input{
-    width: 100%;
-    height: 32px;
+    width: 45px;
+    height: 45px;
     border: none;
-    border-radius: 16px;
+    border-radius: 30px;
     padding: 0 16px;
     font-size: 12px;
     outline: none;
     background-color: #454545;
     color: #d0d0d0;
+    transition: 0.4s;
 }
+
+form input:focus{
+    width: 100%;
+    aspect-ratio: 0;
+}
+
+
 
 input[type="search"]::-webkit-search-cancel-button{
     -webkit-appearance: none;
@@ -78,10 +86,11 @@ main div#loading{
     justify-content: center;
     align-items: center;
     visibility: hidden;
+    margin-top: 10px;
 }
 
 main div#loading img{
-    width: 3em;
+    width: 2.5em;
 }
 
 main section.empty-container{
@@ -161,9 +170,10 @@ main figure figcaption{
 }
 
 main ul li{
-    background-color: black;
-    transform: scale(1);
-    transition: transform 2s ease-in;
+    background-color: #454545;
+    opacity: 1;
+    transition: transform 5s ease-in;
+    transition: 0.8s;
 }
 
 main ul li a{
@@ -173,7 +183,8 @@ main ul li a{
 
 .loading{
     animation-delay: 2s;
-    transform: scale(0);
+    opacity: 0;
+    /* transform: scale(0); */
 }
 
 main ul li:hover{
