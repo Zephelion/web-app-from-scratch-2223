@@ -1,6 +1,7 @@
 // import apiKey  from "./apikey.js";
 import { getSmallerImg } from "./data.js";
 import { spinner } from "./loading.js";
+import { getRelatedPaintings } from "./data.js";
 
 export const container = document.querySelector("main ul");
 export const main = document.querySelector("main");
@@ -33,6 +34,30 @@ export const displayArt = async (paintings) => {
     });
 }
 
+const displayRelatedArt = async (relatedPaintings) => {
+
+  const relatedContainer = main.querySelector(".related ul");
+  console.log(relatedContainer)
+
+  relatedPaintings.forEach(async relatedPainting => {
+    var html = `
+        <li class="loading">
+          <a href="#${relatedPainting.objectNumber}">
+            <img src="${relatedPainting.webImage.url}" alt="${relatedPainting.title}" srcset="">
+          </a>
+        </li>
+    `
+
+    // console.log(html)
+    relatedContainer.insertAdjacentHTML("beforeend", html);
+    const lastLi = relatedContainer.lastElementChild;
+
+    setTimeout(() => {
+      lastLi.classList.remove("loading");
+    }, 400);
+  }); 
+}
+
 export const appendEmpty = (searchTerm) => {
     container.innerHTML = "";
     spinner.innerHTML = "";
@@ -45,8 +70,12 @@ export const appendEmpty = (searchTerm) => {
       `;
 }
 
-export const appendMain = (artDetails) => {
+export const appendMain = async (artDetails) => {
   
+  const maker = artDetails.principalOrFirstMaker;
+  const relatedPaintings = await getRelatedPaintings(maker);
+  // await displayRelatedArt(relatedPaintings);
+
   const main = document.querySelector("main");
   main.innerHTML = "";
 
@@ -60,9 +89,17 @@ export const appendMain = (artDetails) => {
       <h2>${artDetails.dating.presentingDate}</h2>
       <p>${artDetails.description}</p>
       <p>${artDetails.subTitle}</p>
+    </section>
+    <section class="related">
+      <h2>Related paintings</h2>
+        <ul></ul>
     </section>`;
+
+  
   main.insertAdjacentHTML("beforeend", html);
-  console.log(artDetails);
+
+  displayRelatedArt(relatedPaintings);
+  
 }
 
 export const appendError = () => {

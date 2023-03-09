@@ -80,5 +80,15 @@ export const getSmallerImg = async (objectNumber) => {
     return "https://rkd.nl/images/partners/rijksmuseum-logo.jpg";
 
   }
+
+}
+
+export const getRelatedPaintings = async (maker) => {
+  const response = await fetch(`${domain}?key=${apiKey}&involvedMaker=${maker}&ps=10`);
+  const data = await response.json();
+
+  const relatedPaintings = data.artObjects;
+  
+  return relatedPaintings;
 }
 
