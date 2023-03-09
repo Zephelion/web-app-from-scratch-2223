@@ -2,6 +2,7 @@ import { displayArt } from "./render.js";
 import { appendEmpty } from "./render.js";
 import { container } from "./render.js";
 import { main } from "./render.js";
+import { appendError } from "./render.js";
 import {displayLoading, hideLoading} from "./loading.js";
 import apiKey from "./apikey.js";
 import section from "./render.js";
@@ -15,11 +16,15 @@ let loading = false;
 
 export const initialFetchArt = async () => {
 
-  const response = await fetch(`${domain}?key=${apiKey}&p=${page}&ps=${limit}`);
-  const data = await response.json();
-  
-  const paintings = data.artObjects;
-  displayArt(paintings);
+  try{
+    const response = await fetch(`${domain}?key=${apiKey}&p=${page}&ps=${limit}`);
+    const data = await response.json();
+    
+    const paintings = data.artObjects;
+    displayArt(paintings);
+  }catch(err){
+    appendError();
+  }
   
 }
 
@@ -41,7 +46,6 @@ export const loadMoreArt = async () => {
 }
 
 export const searchArt = async (searchTerm) => {
-  console.log(searchTerm);
   const response = await fetch(`${domain}?key=${apiKey}&q=${searchTerm}&p=${page}&ps=10`);
   const data = await response.json();
 

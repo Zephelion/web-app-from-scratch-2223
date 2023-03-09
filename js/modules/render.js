@@ -1,5 +1,6 @@
 // import apiKey  from "./apikey.js";
 import { getSmallerImg } from "./data.js";
+import { spinner } from "./loading.js";
 
 export const container = document.querySelector("main ul");
 export const main = document.querySelector("main");
@@ -34,6 +35,7 @@ export const displayArt = async (paintings) => {
 
 export const appendEmpty = (searchTerm) => {
     container.innerHTML = "";
+    spinner.innerHTML = "";
   
     main.classList.add("flex");
   

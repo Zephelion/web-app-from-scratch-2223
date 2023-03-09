@@ -1,4 +1,4 @@
-const spinner = document.getElementById("loading");
+export const spinner = document.getElementById("loading");
 
 
 export const displayLoading = () => {
