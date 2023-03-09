@@ -67,7 +67,7 @@ export const getSmallerImg = async (objectNumber) => {
     const data = await smallerImg.json();
   
     const z4s = data.levels.filter(level => level.name == "z4");
-    const z4 = z4s[0].tiles[0].url;
+    const z4 = z4s[0].tiles[0].url.replace("http", "https");
   
     return z4;
 
