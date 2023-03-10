@@ -76,7 +76,7 @@ const fetchArt = async () => {
 }
 ```
 Next I decided to append the data to the Html. I created a displayArt function to do that. I emptied the list container and used the forEach functionality to loop over each painting and insert them into the Html by using innerHTML. See code below.
-```
+```javascript
 const displayArt = (paintings) => {
     container.innerHTML = "";
 
