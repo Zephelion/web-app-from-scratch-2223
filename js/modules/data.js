@@ -21,7 +21,7 @@ export const initialFetchArt = async () => {
     const data = await response.json();
     
     const paintings = data.artObjects;
-    displayArt(paintings);
+    displayArt(paintings, "main ul");
   }catch(err){
     appendError();
   }
@@ -39,7 +39,7 @@ export const loadMoreArt = async () => {
   
     const morePaintings = data.artObjects;
   
-    displayArt(morePaintings);
+    displayArt(morePaintings, "main ul");
     hideLoading();
     loading = false;
   }
@@ -60,7 +60,7 @@ export const searchArt = async (searchTerm) => {
     section.innerHTML = "";
     main.classList.remove("flex");
     console.log(paintingsOfMaker);
-    displayArt(paintingsOfMaker);
+    displayArt(paintingsOfMaker, "main ul");
   }
   
 }

@@ -10,7 +10,11 @@ export const item = document.querySelector("main ul li a");
 
 const section = document.querySelector(".empty-container");
 
-export const displayArt = async (paintings) => {
+export const displayArt = async (paintings, container) => {
+
+  const parent = document.querySelector(container);
+
+  console.log(parent);
 
     paintings.forEach(async painting => {
       
@@ -24,8 +28,8 @@ export const displayArt = async (paintings) => {
           </a>
         </li>`;
   
-        container.insertAdjacentHTML("beforeend", liHtml);
-        const lastLi = container.lastElementChild;
+        parent.insertAdjacentHTML("beforeend", liHtml);
+        const lastLi = parent.lastElementChild;
   
         setTimeout(() => {
           lastLi.classList.remove("loading");
@@ -34,29 +38,6 @@ export const displayArt = async (paintings) => {
     });
 }
 
-const displayRelatedArt = async (relatedPaintings) => {
-
-  const relatedContainer = main.querySelector(".related ul");
-  console.log(relatedContainer)
-
-  relatedPaintings.forEach(async relatedPainting => {
-    var html = `
-        <li class="loading">
-          <a href="#${relatedPainting.objectNumber}">
-            <img src="${relatedPainting.webImage.url}" alt="${relatedPainting.title}" srcset="">
-          </a>
-        </li>
-    `
-
-    // console.log(html)
-    relatedContainer.insertAdjacentHTML("beforeend", html);
-    const lastLi = relatedContainer.lastElementChild;
-
-    setTimeout(() => {
-      lastLi.classList.remove("loading");
-    }, 400);
-  }); 
-}
 
 export const appendEmpty = (searchTerm) => {
     container.innerHTML = "";
@@ -72,33 +53,38 @@ export const appendEmpty = (searchTerm) => {
 
 export const appendMain = async (artDetails) => {
   
-  const maker = artDetails.principalOrFirstMaker;
-  const relatedPaintings = await getRelatedPaintings(maker);
-  // await displayRelatedArt(relatedPaintings);
-
-  const main = document.querySelector("main");
-  main.innerHTML = "";
-
-  var html = `
-    <figure>
-      <img src="${artDetails.webImage.url}" alt="">
-      <figcaption>${artDetails.title}</figcaption>
-    </figure>
-    <h3>${artDetails.principalMaker} - ${artDetails.id}</h3>
-    <section>
-      <h2>${artDetails.dating.presentingDate}</h2>
-      <p>${artDetails.description}</p>
-      <p>${artDetails.subTitle}</p>
-    </section>
-    <section class="related">
-      <h2>Related paintings</h2>
-        <ul></ul>
-    </section>`;
-
+  try{
+    const maker = artDetails.principalOrFirstMaker;
+    const relatedPaintings = await getRelatedPaintings(maker);
   
-  main.insertAdjacentHTML("beforeend", html);
+    const main = document.querySelector("main");
+    main.innerHTML = "";
+  
+    var html = `
+      <figure>
+        <img src="${artDetails.webImage.url}" alt="">
+        <figcaption>${artDetails.title}</figcaption>
+      </figure>
+      <h3>${artDetails.principalMaker} - ${artDetails.id}</h3>
+      <section>
+        <h2>${artDetails.dating.presentingDate}</h2>
+        <p>${artDetails.description}</p>
+        <p>${artDetails.subTitle}</p>
+      </section>
+      <section class="related">
+        <h2>Related paintings</h2>
+          <ul></ul>
+      </section>`;
+  
+    
+    main.insertAdjacentHTML("beforeend", html);
+    displayArt(relatedPaintings, "main .related ul");
+  }catch(err){
+    console.log(err);
+    appendError();
+  }
 
-  displayRelatedArt(relatedPaintings);
+
   
 }
 
