@@ -23,19 +23,10 @@ const handleRouting = async (objectNumber) => {
 
 export const onRouteChanged = () => {
     const hash = window.location.hash;
-  
-    console.log(hash)
-    if(hash == ""){
-      console.log("home");
-      window.location = "index.html";
-    }else{
-      handleRouting(hash);
-    }
+    (hash == "" ? window.location = "index.html" : handleRouting(hash))
   };
   
   
- export const checkHash = () => {
-    if(window.location.hash) { 
-      onRouteChanged();
-    }
-  }
+export const checkHash = () => {
+  (window.location.hash ? onRouteChanged() : "");
+}

@@ -5,7 +5,6 @@ import { getRelatedPaintings } from "./data.js";
 
 export const container = document.querySelector("main ul");
 export const main = document.querySelector("main");
-
 export const item = document.querySelector("main ul li a");
 
 const section = document.querySelector(".empty-container");
@@ -14,7 +13,8 @@ export const displayArt = async (paintings, container) => {
 
   const parent = document.querySelector(container);
 
-  console.log(parent);
+  (parent == null ? console.log("parent is null") : "");
+
 
     paintings.forEach(async painting => {
       
@@ -52,10 +52,11 @@ export const appendEmpty = (searchTerm) => {
 }
 
 export const appendMain = async (artDetails) => {
+  main.classList.remove("flex");
   
   try{
     const maker = artDetails.principalOrFirstMaker;
-    const relatedPaintings = await getRelatedPaintings(maker);
+    var relatedPaintings = await getRelatedPaintings(maker);
   
     const main = document.querySelector("main");
     main.innerHTML = "";
@@ -78,6 +79,8 @@ export const appendMain = async (artDetails) => {
   
     
     main.insertAdjacentHTML("beforeend", html);
+    relatedPaintings.shift();
+
     displayArt(relatedPaintings, "main .related ul");
   }catch(err){
     console.log(err);
