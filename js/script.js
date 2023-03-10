@@ -10,7 +10,6 @@ const form = document.querySelector("form");
 let fired = false;
 
 
-
 window.addEventListener("scroll", () => {
   const endOfPage = window.innerHeight + window.scrollY >= document.body.offsetHeight - 500;
   
