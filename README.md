@@ -9,6 +9,8 @@ clone the repository with the command below.
 git clone "https://github.com/Zephelion/web-app-from-scratch-2223.git"
 ```
 
+After cloning or downloading the zip open index.html (plz in mobile looks better :eyes:)
+
 ## Assignment
 
 1. [Single Page App](https://github.com/cmda-minor-web/web-app-from-scratch-2223/blob/master/course/week-2.md): Design and build a single page web app based on a User Story.
