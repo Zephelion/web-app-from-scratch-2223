@@ -72,9 +72,19 @@ main ul{
     transition: 0.4s;
 }
 
+main > section.related{
+    padding: 0;
+}
+
+main > section.related h2{
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
 main > h2{
     font-weight: 100;
     color: white;
+    margin-bottom: 20px;
 }
 
 main div#loading.show{
